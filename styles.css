@@ -1,0 +1,127 @@
+/* import pixel font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive; /* retro pixel font */
+  text-transform: uppercase; /* optional: retro style */
+}
+
+/* page background + centering */
+main {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('images/hero0.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* central panel (div0) - single consolidated rule */
+#div0 {
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.62),rgba(0, 0, 0, 0.62)), url('images/hero0.png');            
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 36px 48px;
+  border-radius: 30px;
+  border: 3px solid rgba(0, 255, 102, 0.95);  /* neon frame */
+  box-shadow: 0 0 30px rgba(0, 255, 102, 0.18), 6px 6px 18px rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* heading */
+#div1 {
+  margin-bottom: 12px;
+}
+#div1 h1 {
+  margin: 0;
+  font-size: 42px;
+  color: #00ff66;
+  text-shadow: 2px 2px #000, 0 0 8px #00ff66; /* pixelated neon effect */
+}
+
+/* cards container */
+#cards {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* individual cards */
+.card {
+  width: 170px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(0, 255, 102, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* card hover */
+.card:hover {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 0 26px #00ff66;
+  border-color: #00ff66;
+}
+
+/* card label */
+.card p {
+  margin: 0 0 10px;
+  color: #ffee88;
+  font-weight: 700;
+  text-shadow: 1px 1px #000, 0 0 6px #ffee88; /* pixelated neon text */
+  font-size: 12px; /* slightly smaller for retro feel */
+}
+
+/* question mark icon (Remixicon or FontAwesome) */
+.card i {
+  display: block;
+  font-size: 32px; /* slightly smaller for pixel style */
+  line-height: 1;
+  color: #00ff66;
+  text-shadow: 2px 2px #000, 0 0 10px #00ff66;
+}
+
+/* "Press Start" line */
+#div2 p {
+  margin: 12px 0;
+  font-size: 16px;
+  color: #ffee88;
+  text-shadow: 1px 1px #000, 0 0 6px #ffee88;
+}
+
+/* start button */
+#start {
+  border: none;
+  padding: 16px 32px;
+  font-size: 24px;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #00aa00, #007700);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 12px #00ff00, 4px 4px 10px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  text-shadow: 1px 1px #000; /* pixel look on button text */
+}
+
+#start:hover {
+  background: linear-gradient(to bottom, #00cc00, #009900);
+  box-shadow: 0 0 22px #00ff00, 4px 4px 12px rgba(0, 0, 0, 0.35);
+}
