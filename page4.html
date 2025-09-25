@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Matching Puzzle</title>
+<link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+
+<!-- Nav / Level Bar -->
+<nav id="level-nav">
+  <span id="level-text">Level 2</span>
+  <div id="progress-bar">
+    <div id="progress-fill" style="width:0%;"></div>
+  </div>
+</nav>
+
+<section id="puzzle-section">
+  <h2>Match Skills to Projects</h2>
+
+  <div id="skills-container">
+    <div class="skill-card" data-skill="HTML" data-targets="Gamified Portfolio,Web-Quiz,Travel Website" draggable="true">HTML</div>
+    <div class="skill-card" data-skill="CSS" data-targets="Gamified Portfolio,Web-Quiz,Travel Website" draggable="true">CSS</div>
+    <div class="skill-card" data-skill="JavaScript" data-targets="Gamified Portfolio,Web-Quiz" draggable="true">JavaScript</div>
+    <div class="skill-card" data-skill="Node.js" data-targets="Basic CRUD implementation,Authenticated Notes Making API" draggable="true">Node.js</div>
+    <div class="skill-card" data-skill="React.js" data-targets="Gamified Sustainable Farming Interface" draggable="true">React.js</div>
+    <div class="skill-card" data-skill="MongoDB" data-targets="Basic CRUD implementation,Authenticated Notes Making API" draggable="true">MongoDB</div>
+  </div>
+
+  <div id="categories-container">
+    <div class="drop-zone" data-project="Gamified Portfolio">Gamified Portfolio</div>
+    <div class="drop-zone" data-project="Web-Quiz">Web-Quiz</div>
+    <div class="drop-zone" data-project="Travel Website">Travel Website</div>
+    <div class="drop-zone" data-project="Basic CRUD implementation">Basic CRUD implementation</div>
+    <div class="drop-zone" data-project="Authenticated Notes Making API">Authenticated Notes Making API</div>
+    <div class="drop-zone" data-project="Gamified Sustainable Farming Interface">Gamified Sustainable Farming Interface</div>
+  </div>
+
+  <button id="reset-btn">Reset Puzzle</button>
+</section>
+
+<!-- Level Up Pop -->
+<div id="level-up">
+  <h1>Level Up!</h1>
+  <h2 id="xp-earned">XP Earned: 0</h2>
+  <button id="continue-btn">Continue</button>
+</div>
+
+<!-- Skills Section (hidden initially) -->
+<section id="skills-section">
+  <h2>Your Skills</h2>
+  <div class="skills-grid">
+    <div class="skill">HTML</div>
+    <div class="skill">CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">Node.js</div>
+    <div class="skill">React.js</div>
+    <div class="skill">MongoDB</div>
+  </div>
+</section>
+
+<script src="script4.js"></script>
+</body>
+</html>
