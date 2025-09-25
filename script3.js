@@ -23,6 +23,7 @@ const quizContent = document.getElementById("quiz-content")
 const questionText = document.getElementById("question-text")
 const optionsContainer = document.getElementById("options")
 const quizProgress = document.getElementById("quiz-progress")
+const continueBtn = document.getElementById("continue-btn")
 
 function startQuiz() {
   if (quizPlayed) return
@@ -31,6 +32,8 @@ function startQuiz() {
   quizContent.style.display = "block"
   currentQuestionIndex = 0
   score = 0
+  xp = 0
+  progressFill.style.width = "0%"
   showQuestion()
 }
 
@@ -42,48 +45,70 @@ function showQuestion() {
     const btn = document.createElement("button")
     btn.textContent = opt
     btn.classList.add("option-btn")
-    btn.addEventListener("click", () => checkAnswer(index))
+    btn.addEventListener("click", () => checkAnswer(index, btn))
     optionsContainer.appendChild(btn)
   })
   quizProgress.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`
 }
 
-function checkAnswer(selectedIndex) {
+function checkAnswer(selectedIndex, button) {
   const q = questions[currentQuestionIndex]
+
+  // Show feedback for correct/wrong
   if (selectedIndex === q.answer) {
-    score++
+    button.classList.add("correct")
     xp += 5
-  }
-  currentQuestionIndex++
-  if (currentQuestionIndex < questions.length) {
-    showQuestion()
   } else {
-    finishQuiz()
+    button.classList.add("wrong")
   }
+
+  // Fill progress bar by 20% per question
+  let progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100
+  progressFill.style.width = `${progressPercent}%`
+
+  // Delay to show feedback before moving on
+  setTimeout(() => {
+    currentQuestionIndex++
+    if (currentQuestionIndex < questions.length) {
+      showQuestion()
+    } else {
+      finishQuiz()
+    }
+  }, 600)
 }
 
 function finishQuiz() {
   xp += 10
   level++
   quizCard.remove()
-  setTimeout(() => {
-    showLevelUp()
-  }, 800)
+  setTimeout(() => showLevelUp(), 800)
 }
 
 function showLevelUp() {
   levelText.textContent = `Level ${level}`
   progressFill.style.width = "100%"
+  // Show XP earned
+  let xpText = document.createElement("div")
+  xpText.id = "xp-earned"
+  xpText.textContent = `XP Earned: ${xp}`
+  levelUpPopup.appendChild(xpText)
   levelUpPopup.style.display = "flex"
   setTimeout(() => {
     levelUpPopup.style.display = "none"
     projectsSection.style.display = "block"
+    if (continueBtn) continueBtn.style.display = "block"
+    xpText.remove()
   }, 2500)
 }
 
-if (startBtn) {
-  startBtn.addEventListener("click", startQuiz)
+// Continue button click handler
+if (continueBtn) {
+  continueBtn.addEventListener("click", () => {
+    alert("Continue button clicked!")
+  })
 }
+
+if (startBtn) startBtn.addEventListener("click", startQuiz)
 
 const moreInfoButtons = document.querySelectorAll(".more-info-btn")
 moreInfoButtons.forEach(btn => {
