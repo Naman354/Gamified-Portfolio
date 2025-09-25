@@ -104,7 +104,7 @@ function showLevelUp() {
 // Continue button click handler
 if (continueBtn) {
   continueBtn.addEventListener("click", () => {
-    alert("Continue button clicked!")
+    window.location.href="page4.html";
   })
 }
 
