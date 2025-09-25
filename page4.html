@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skill Matching Puzzle</title>
-<link rel="stylesheet" href="styles4.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skill Matching Puzzle</title>
+  <link rel="stylesheet" href="styles4.css" />
 </head>
 <body>
 
-<!-- Nav / Level Bar -->
 <nav id="level-nav">
   <span id="level-text">Level 2</span>
   <div id="progress-bar">
-    <div id="progress-fill" style="width:0%;"></div>
+    <div id="progress-fill" style="width:0%"></div>
   </div>
 </nav>
 
@@ -40,23 +39,40 @@
   <button id="reset-btn">Reset Puzzle</button>
 </section>
 
-<!-- Level Up Pop -->
-<div id="level-up">
-  <h1>Level Up!</h1>
+<div id="level-up" aria-hidden="true">
+  <h1>LEVEL UP!</h1>
   <h2 id="xp-earned">XP Earned: 0</h2>
   <button id="continue-btn">Continue</button>
 </div>
 
-<!-- Skills Section (hidden initially) -->
-<section id="skills-section">
-  <h2>Your Skills</h2>
+<section id="skills-section" style="display:none">
+  <h2 class="section-title"> Skills</h2>
   <div class="skills-grid">
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">Node.js</div>
-    <div class="skill">React.js</div>
-    <div class="skill">MongoDB</div>
+    <div class="skill-category">
+      <h3>Programming Languages</h3>
+      <p>C / C++ · Java · Python · JavaScript</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Frontend Development</h3>
+      <p>HTML5 · CSS3 · JavaScript (ES6+) · React.js</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Backend Development</h3>
+      <p>Node.js · Express.js · CRUD implementations · MongoDB</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Problem Solving & Competitive Programming</h3>
+      <p>Algorithms, data structures, and timed problem-solving practice</p>
+    </div>
+
+    <div class="skill-category wide">
+      <h3> Practical Application</h3>
+      <p>These skills have been applied across multiple projects: building gamified web applications and quiz platforms, creating API-driven backends, and experimenting with full-stack development workflows.</p>
+      <p> I aim to continuously expand my skill set, focusing on full-stack development and advanced backend & frontend frameworks.</p>
+    </div>
   </div>
 </section>
 
