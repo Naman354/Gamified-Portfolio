@@ -1,11 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    PAGE 3 WORK IN PROGRESS
-</body>
-</html>
+    <title>XP Boost Quiz</title>
+    <link rel="stylesheet" href="styles3.css">
+    <script defer src="script3.js"></script>
+    </head>
+    <body>
+    
+    <div id="progress-container">
+        <span id="level-text">LEVEL 1</span>
+        <div id="progress-bar">
+        <div id="progress-fill"></div>
+        </div>
+    </div>
+
+    <main id="quiz-section">
+        <div id="quiz-card">
+        <h3>XP Boost Quiz</h3>
+        <p>Answer 5 quick questions to earn XP and unlock my projects!</p>
+        <button id="start-btn">Start Quiz</button>
+        <div id="quiz-content" style="display:none;">
+            <h3 id="question-text">Question here</h3>
+            <div id="options"></div>
+            <p id="quiz-progress"></p>
+        </div>
+        </div>
+    </main>
+
+    <div id="level-up" style="display:none;">
+        <h1>LEVEL UP!</h1>
+        <h2>You unlocked my Projects!</h2>
+    </div>
+
+<main id="projects-section" style="display:none;">
+  <div class="projects-intro">
+    <h3>My Projects</h3>
+    <p>Here are some beginner-friendly projects where I applied web development and backend skills. Each project helped me learn new concepts and improve my coding abilities.</p>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <h4>Web Quiz Application</h4>
+      <div class="tech-stack"><span>HTML</span> <span>CSS</span> <span>JavaScript</span></div>
+      <p>A fun, interactive quiz app where users can answer questions and see their scores instantly.</p>
+      <button class="more-info-btn">More Info</button>
+      <ul class="more-info" style="display:none;">
+        <li>Multiple-choice questions with instant feedback</li>
+        <li>Score tracking and progress indicators</li>
+        <li>Clean, responsive layout</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <h4>Gamified Sustainable Farming (SIH)</h4>
+      <div class="tech-stack"><span>HTML</span> <span>CSS</span> <span>JavaScript</span></div>
+      <p>A front-end interface promoting sustainable farming through gamification.</p>
+      <button class="more-info-btn">More Info</button>
+      <ul class="more-info" style="display:none;">
+        <li>Interactive farming dashboard</li>
+        <li>Gamified reward system to encourage learning</li>
+        <li>Clean and beginner-friendly design</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <h4>Travel Website</h4>
+      <div class="tech-stack"><span>HTML</span> <span>CSS</span> <span>JavaScript</span></div>
+      <p>A beginner-friendly travel site showcasing popular destinations and travel tips.</p>
+      <button class="more-info-btn">More Info</button>
+      <ul class="more-info" style="display:none;">
+        <li>Landing page with featured destinations</li>
+        <li>Simple navigation and responsive layout</li>
+        <li>Interactive sections with images and info cards</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <h4>Gamified Portfolio Website</h4>
+      <div class="tech-stack"><span>HTML</span> <span>CSS</span> <span>JavaScript</span></div>
+      <p>An engaging portfolio incorporating XP, levels, and mini quizzes.</p>
+      <button class="more-info-btn">More Info</button>
+      <ul class="more-info" style="display:none;">
+        <li>Leveling system for portfolio sections</li>
+        <li>Mini quiz game to unlock pages</li>
+        <li>Neon-themed interactive UI</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <h4>Basic CRUD Project with Frontend Integration</h4>
+      <div class="tech-stack"><span>HTML</span> <span>CSS</span> <span>JavaScript</span> <span>Node.js</span></div>
+      <p>A project demonstrating basic CRUD operations with a frontend interface.</p>
+      <button class="more-info-btn">More Info</button>
+      <ul class="more-info" style="display:none;">
+        <li>Functional CRUD operations</li>
+        <li>Frontend integration for visualization</li>
+        <li>Beginner-level backend interaction</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <h4>Authenticated Notes-Making API</h4>
+      <div class="tech-stack"><span>Node.js</span> <span>Express</span> <span>MongoDB</span></div>
+      <p>A backend project allowing secure note creation, reading, updating, and deletion.</p>
+      <button class="more-info-btn">More Info</button>
+      <ul class="more-info" style="display:none;">
+        <li>User authentication and session management</li>
+        <li>CRUD operations for notes</li>
+        <li>Structured API design for frontend integration</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+
+    </body>
+    </html>
