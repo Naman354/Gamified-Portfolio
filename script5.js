@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let level = 3;
-  let xp = 0;
+  let level = parseInt(localStorage.getItem("level")) || 3;
+  let xp = parseInt(localStorage.getItem("xp")) || 0;
   let timerDuration = 90; // seconds
   let timer = timerDuration;
   let timerInterval = null;
   let typingStarted = false;
   let startTime = null;
 
-  const targetText = document.getElementById("target-text").textContent.trim();
+  const targetText = document.getElementById("target-text")?.textContent.trim();
   const typingInput = document.getElementById("typing-input");
   const submitBtn = document.getElementById("submit-btn");
   const timerEl = document.getElementById("timer");
@@ -22,6 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const challengeTitle = document.getElementById("challenge-title");
   const challengeInstruction = document.getElementById("challenge-instruction");
   const levelHeading = document.getElementById("level-heading");
+
+  // Show contact section if challenge already completed
+  if (localStorage.getItem("typingCompleted") === "true") {
+    challengeCard?.remove();
+    contactSection.style.display = "flex";
+    progressFill.style.width = "100%";
+    xpEarnedText.textContent = `XP Earned: ${xp}`;
+    document.getElementById("level-text").textContent = `Level ${level}`;
+    if (levelHeading) levelHeading.textContent = `LEVEL ${level}`;
+  }
 
   // Ensure Level Up popup is hidden on page load
   levelUpPopup.style.display = "none";
@@ -47,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
-  typingInput.addEventListener("input", startTimer);
+  typingInput?.addEventListener("input", startTimer);
 
-  submitBtn.addEventListener("click", () => {
+  submitBtn?.addEventListener("click", () => {
     if (!typingStarted) return;
 
     clearInterval(timerInterval);
@@ -65,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (challengeInstruction) challengeInstruction.style.display = "none";
 
       // Remove typing card and show contact section
-      challengeCard.remove();
+      challengeCard?.remove();
       contactSection.style.display = "flex";
 
       // Show Level Up popup
@@ -73,18 +83,23 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("level-text").textContent = `Level ${level}`;
       if (levelHeading) levelHeading.textContent = `LEVEL ${level}`;
       levelUpPopup.style.display = "flex";
+
+      // Save progress
+      localStorage.setItem("typingCompleted", "true");
+      localStorage.setItem("level", level);
+      localStorage.setItem("xp", xp);
     } else {
       statusMsg.textContent = "❌ Text does not match!";
     }
   });
 
-  continueBtn.addEventListener("click", () => {
+  continueBtn?.addEventListener("click", () => {
     levelUpPopup.style.display = "none";
   });
 
   // Contact form validation
   const form = document.getElementById("contact-form");
-  form.addEventListener("submit", e => {
+  form?.addEventListener("submit", e => {
     e.preventDefault();
     let valid = true;
 
@@ -116,3 +131,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+    

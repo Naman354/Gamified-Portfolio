@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let level = 2;
-  let xp = 0;
+  let level = parseInt(localStorage.getItem("level")) || 2;
+  let xp = parseInt(localStorage.getItem("xp")) || 0;
   let draggedSkill = null;
 
   const skillCards = Array.from(document.querySelectorAll(".skill-card"));
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const initialRemainingTargets = {};
   const remainingTargets = {};
   const projectRemainingSkills = {};
-
   let initialTotalDrops = 0;
 
   skillCards.forEach(card => {
@@ -82,22 +81,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     draggedSkill = null;
-
     updateProgressBar();
 
     const stillRemaining = Object.values(remainingTargets).reduce((s, a) => s + a.length, 0);
     if (stillRemaining === 0) {
-      showLevelUp();
+      finishSkillsPuzzle();
     }
   }
 
-  function showLevelUp() {
+  function finishSkillsPuzzle() {
     xpEarnedText.textContent = `XP Earned: ${xp}`;
     level++;
     levelText.textContent = `Level ${level}`;
     skillsSection.style.display = "block";
     levelUpPopup.style.display = "flex";
     puzzleSection.style.display = "none";
+
+    // Save progress to localStorage
+    localStorage.setItem("skillsCompleted", "true");
+    localStorage.setItem("level", level);
+    localStorage.setItem("xp", xp);
+  }
+
+  // Restore progress on page load
+  if (localStorage.getItem("skillsCompleted") === "true") {
+    skillsSection.style.display = "block";
+    puzzleSection.style.display = "none";
+    levelText.textContent = `Level ${level}`;
+    progressFill.style.width = "100%";
   }
 
   skillCards.forEach(card => {
@@ -125,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   skillsContinueBtn.addEventListener("click", () => {
     window.location.href="page5.html";
-    // Replace with navigation or next section logic if needed
   });
 
   resetBtn.addEventListener("click", () => {
@@ -152,6 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
     levelUpPopup.style.display = "none";
     skillsSection.style.display = "none";
     puzzleSection.style.display = "block";
+
+    // Clear localStorage for restart
+    localStorage.removeItem("skillsCompleted");
+    localStorage.setItem("level", level);
+    localStorage.setItem("xp", xp);
   });
 
   updateProgressBar();
