@@ -342,3 +342,138 @@ body {
   text-shadow: 1px 1px #000;
 }
 
+/* =====================
+   Responsive for Mobile / Android
+===================== */
+@media (max-width: 600px) {
+
+  /* Body padding */
+  body {
+    padding-top: 40px;
+  }
+
+  /* Level bar */
+  #progress-container {
+    top: 10px;
+    left: 10px;
+    padding: 4px 6px;
+    gap: 6px;
+  }
+
+  #level-text {
+    font-size: 11px;
+  }
+
+  #progress-bar {
+    width: 100px;
+    height: 10px;
+  }
+
+  /* Quiz card */
+  #quiz-section {
+    padding: 0 12px;
+  }
+
+  #quiz-card {
+    padding: 24px 20px;
+    max-width: 100%;
+  }
+
+  #quiz-card h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  #quiz-card p {
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  /* Options grid */
+  #options {
+    grid-template-columns: 1fr; /* single column for mobile */
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .option-btn {
+    font-size: 13px;
+    padding: 14px;
+  }
+
+  /* Level Up Screen */
+  #level-up {
+    padding: 24px 12px;
+  }
+
+  #level-up h1 {
+    font-size: 28px;
+  }
+
+  #level-up h2 {
+    font-size: 14px;
+  }
+
+  #start-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* Projects Section */
+  #projects-section {
+    padding: 24px 12px;
+  }
+
+  .projects-intro h3 {
+    font-size: 20px;
+  }
+
+  .projects-intro p {
+    font-size: 13px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr; /* single column for mobile */
+    gap: 20px;
+  }
+
+  .project-card {
+    padding: 24px;
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .project-card h4 {
+    font-size: 16px;
+  }
+
+  .project-card p {
+    font-size: 13px;
+  }
+
+  .tech-stack span {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  .more-info-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .more-info {
+    font-size: 12px;
+    padding-left: 16px;
+  }
+
+  /* Continue button */
+  #continue-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* XP text */
+  #xp-earned {
+    font-size: 14px;
+  }
+}
