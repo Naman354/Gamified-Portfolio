@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const challengeTitle = document.getElementById("challenge-title");
   const challengeInstruction = document.getElementById("challenge-instruction");
+  const levelHeading = document.getElementById("level-heading");
 
   // Ensure Level Up popup is hidden on page load
   levelUpPopup.style.display = "none";
@@ -60,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
       progressFill.style.width = "100%";
 
       // Hide title and instruction
-      challengeTitle.style.display = "none";
-      challengeInstruction.style.display = "none";
+      if (challengeTitle) challengeTitle.style.display = "none";
+      if (challengeInstruction) challengeInstruction.style.display = "none";
 
       // Remove typing card and show contact section
       challengeCard.remove();
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Show Level Up popup
       level++;
       document.getElementById("level-text").textContent = `Level ${level}`;
-      levelUpPopup.querySelector("h1").textContent = "Congratulations! You finished the game";
+      if (levelHeading) levelHeading.textContent = `LEVEL ${level}`;
       levelUpPopup.style.display = "flex";
     } else {
       statusMsg.textContent = "❌ Text does not match!";
