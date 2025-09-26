@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let level = parseInt(localStorage.getItem("level")) || 3;
   let xp = parseInt(localStorage.getItem("xp")) || 0;
-  let timerDuration = 90; // seconds
+  let timerDuration = 90;
   let timer = timerDuration;
   let timerInterval = null;
   let typingStarted = false;
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const challengeInstruction = document.getElementById("challenge-instruction");
   const levelHeading = document.getElementById("level-heading");
 
-  // Show contact section if challenge already completed
   if (localStorage.getItem("typingCompleted") === "true") {
     challengeCard?.remove();
     contactSection.style.display = "flex";
@@ -33,10 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (levelHeading) levelHeading.textContent = `LEVEL ${level}`;
   }
 
-  // Ensure Level Up popup is hidden on page load
   levelUpPopup.style.display = "none";
 
-  // Timer updater
   function startTimer() {
     if (typingStarted) return;
     typingStarted = true;
@@ -70,21 +67,17 @@ document.addEventListener("DOMContentLoaded", () => {
       xpEarnedText.textContent = `XP Earned: ${xp}`;
       progressFill.style.width = "100%";
 
-      // Hide title and instruction
       if (challengeTitle) challengeTitle.style.display = "none";
       if (challengeInstruction) challengeInstruction.style.display = "none";
 
-      // Remove typing card and show contact section
       challengeCard?.remove();
       contactSection.style.display = "flex";
 
-      // Show Level Up popup
       level++;
       document.getElementById("level-text").textContent = `Level ${level}`;
       if (levelHeading) levelHeading.textContent = `LEVEL ${level}`;
       levelUpPopup.style.display = "flex";
 
-      // Save progress
       localStorage.setItem("typingCompleted", "true");
       localStorage.setItem("level", level);
       localStorage.setItem("xp", xp);
@@ -97,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     levelUpPopup.style.display = "none";
   });
 
-  // Contact form validation
   const form = document.getElementById("contact-form");
   form?.addEventListener("submit", e => {
     e.preventDefault();
@@ -107,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email");
     const message = document.getElementById("message");
 
-    // Reset errors
     ["name", "email", "message"].forEach(id => {
       document.getElementById(`${id}-error`).textContent = "";
     });
@@ -131,4 +122,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-    

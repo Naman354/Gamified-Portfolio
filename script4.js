@@ -97,13 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
     levelUpPopup.style.display = "flex";
     puzzleSection.style.display = "none";
 
-    // Save progress to localStorage
     localStorage.setItem("skillsCompleted", "true");
     localStorage.setItem("level", level);
     localStorage.setItem("xp", xp);
   }
 
-  // Restore progress on page load
   if (localStorage.getItem("skillsCompleted") === "true") {
     skillsSection.style.display = "block";
     puzzleSection.style.display = "none";
@@ -163,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
     skillsSection.style.display = "none";
     puzzleSection.style.display = "block";
 
-    // Clear localStorage for restart
     localStorage.removeItem("skillsCompleted");
     localStorage.setItem("level", level);
     localStorage.setItem("xp", xp);

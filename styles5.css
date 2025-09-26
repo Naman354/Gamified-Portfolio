@@ -17,7 +17,6 @@ body {
   min-height:100vh;
 }
 
-/* Level bar */
 #level-nav {
   position:fixed; top:20px; left:20px; z-index:50;
   display:flex; align-items:center; gap:10px;
@@ -40,7 +39,6 @@ body {
   transition:width 0.45s ease;
 }
 
-/* Challenge */
 #challenge-section {
   padding:120px 20px 60px; max-width:800px; margin:0 auto; text-align:center;
 }
@@ -99,7 +97,6 @@ body {
   text-shadow:0 0 6px rgba(0,255,102,0.3);
 }
 
-/* Buttons */
 #submit-btn {
   margin-top:12px;
 }
@@ -116,7 +113,6 @@ body {
   margin-right:auto;
 }
 
-/* General button styling */
 button, #start1 {
   border:none; padding:14px 28px;
   font-size:18px;
@@ -134,7 +130,6 @@ button:hover, #start1:hover, #continue-btn:hover, #contact-form button:hover {
   box-shadow:0 0 28px #00ff00, 6px 8px 18px rgba(0,0,0,0.55);
 }
 
-/* Contact section */
 #contact-section {
   padding:120px 20px; display:flex; justify-content:center; align-items:center;
 }
@@ -160,7 +155,6 @@ textarea { resize:none; min-height:100px; }
 
 .error { color:#ff5555; font-size:13px; }
 
-/* Level up popup */
 #level-up {
   position:fixed; inset:0; display:none; z-index:120;
   background:rgba(0,0,0,0.92); color:var(--neon);
@@ -173,7 +167,6 @@ textarea { resize:none; min-height:100px; }
 #xp-earned { color:yellow; font-size:18px; }
 .congrats { color:var(--muted); font-size:14px; text-shadow:0 0 6px #ffee88; }
 
-/* Responsive */
 @media (max-width:600px){
   #challenge-section { padding:100px 14px; }
   #contact-form button, #continue-btn {
@@ -182,17 +175,12 @@ textarea { resize:none; min-height:100px; }
   }
 }
 
-/* =====================
-   Responsive for Android / Mobile
-===================== */
 @media (max-width: 480px) {
 
-  /* Body padding adjustment */
   body {
     padding-top: 40px;
   }
 
-  /* Level bar smaller */
   #level-nav {
     top: 10px;
     left: 10px;
@@ -209,7 +197,6 @@ textarea { resize:none; min-height:100px; }
     height: 10px;
   }
 
-  /* Challenge section smaller */
   #challenge-section {
     padding: 80px 12px 40px;
   }
@@ -244,13 +231,11 @@ textarea { resize:none; min-height:100px; }
     gap: 6px;
   }
 
-  /* Buttons */
   button, #start1, #submit-btn, #continue-btn, #contact-form button {
     padding: 10px 20px;
     font-size: 14px;
   }
 
-  /* Contact Section */
   #contact-section {
     padding: 80px 12px;
   }
@@ -273,7 +258,6 @@ textarea { resize:none; min-height:100px; }
     min-height: 80px;
   }
 
-  /* Level Up Popup */
   #level-up {
     padding: 16px;
   }

@@ -17,7 +17,6 @@ body {
   min-height: 100vh;
 }
 
-/* Level bar nav */
 #level-nav {
   position: fixed; top: 20px; left: 20px; z-index: 50;
   display: flex; align-items: center; gap: 10px;
@@ -40,7 +39,6 @@ body {
   transition: width 0.45s ease, box-shadow 0.35s ease;
 }
 
-/* Puzzle area */
 #puzzle-section {
   padding: 120px 20px 60px; max-width: 1100px; margin: 0 auto; text-align: center;
 }
@@ -114,22 +112,20 @@ body {
   transform: scale(1.05);
 }
 
-/* Level up popup */
 #level-up {
   position: fixed; inset: 0; z-index: 120;
   background: rgba(0,0,0,0.92); color: var(--neon); font-family: 'Press Start 2P', monospace;
-  display: none; /* FIXED: starts hidden */
+  display: none; 
   align-items: center; justify-content: center; flex-direction: column; gap: 12px;
   text-align: center; padding: 24px;
 }
 
 #xp-earned {
-  color: yellow; /* FIXED: Yellow text */
+  color: yellow;
   text-shadow: 0 0 10px yellow;
   font-size: 18px;
 }
 
-/* Skills section */
 #skills-section { display: none; padding: 72px 20px; max-width: 1100px; margin: 0 auto; }
 
 .section-title { font-family: 'Press Start 2P', monospace; color: var(--neon); text-shadow: 0 0 12px var(--neon); margin-bottom: 28px; }
@@ -151,7 +147,6 @@ body {
 
 .skill-category.wide { grid-column: span 2 }
 
-/* Responsive tweaks */
 @media (max-width:720px) {
   #puzzle-section { padding: 100px 14px 40px }
   .drop-zone { min-width: 120px; padding: 18px }
@@ -159,9 +154,6 @@ body {
   .skill-category.wide { grid-column: span 1 }
 }
 
-/* =====================
-   Responsive for Android / Mobile
-===================== */
 @media (max-width: 480px) {
 
   body {

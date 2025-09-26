@@ -25,7 +25,6 @@ const optionsContainer = document.getElementById("options");
 const quizProgress = document.getElementById("quiz-progress");
 const continueBtn = document.getElementById("continue-btn");
 
-// On page load, check if quiz was completed
 window.addEventListener("DOMContentLoaded", () => {
   levelText.textContent = `Level ${level}`;
   if (quizPlayed) {
@@ -89,7 +88,6 @@ function finishQuiz() {
   level++;
   quizPlayed = true;
 
-  // Save progress to localStorage
   localStorage.setItem("level", level);
   localStorage.setItem("xp", xp);
   localStorage.setItem("quizPlayed", "true");
