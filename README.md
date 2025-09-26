@@ -1,4 +1,4 @@
-🎮 Gamified Portfolio
+GAMIFIED PORTFOLIO
 
 A unique, interactive portfolio where each section is unlocked by completing a fun mini-game challenge. Instead of just scrolling through static pages, visitors engage with short challenges that reveal different parts of the portfolio step by step.
 
