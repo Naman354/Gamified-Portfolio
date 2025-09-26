@@ -192,3 +192,51 @@ body::before{
   background:linear-gradient(to bottom, #00cc00, #009900);
   box-shadow:0 0 28px #00ff00, 6px 8px 18px rgba(0,0,0,0.55);
 }
+
+/* =====================
+   Responsive for Android
+===================== */
+@media (max-width: 480px){
+  main{
+    flex-direction: column;
+    padding:20px;
+    gap:20px;
+  }
+
+  .content-section{
+    flex:1 1 100%;
+  }
+
+  .profile-image{
+    flex:0 0 100%;
+    margin-bottom:20px;
+  }
+
+  .profile-image img{
+    width:160px;
+    height:auto;
+  }
+
+  h3{
+    font-size:16px;
+  }
+
+  p, li{
+    font-size:12px;
+  }
+
+  li i{
+    width:16px;
+    margin-right:6px;
+  }
+
+  #start1{
+    padding:12px 24px;
+    font-size:16px;
+    bottom:20px;
+  }
+
+  main > .content-section > div{
+    padding:14px;
+  }
+}

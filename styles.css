@@ -125,3 +125,45 @@ main {
   background: linear-gradient(to bottom, #00cc00, #009900);
   box-shadow: 0 0 22px #00ff00, 4px 4px 12px rgba(0, 0, 0, 0.35);
 }
+
+/* =======================
+   Responsive for Android
+======================= */
+@media (max-width: 480px) {
+  #div0 {
+    padding: 24px 18px;
+    border-radius: 20px;
+    background-size: cover;
+  }
+
+  #div1 h1 {
+    font-size: 28px;
+  }
+
+  #cards {
+    gap: 14px;
+    margin: 12px 0;
+  }
+
+  .card {
+    width: 120px;
+    padding: 12px;
+  }
+
+  .card p {
+    font-size: 10px;
+  }
+
+  .card i {
+    font-size: 24px;
+  }
+
+  #div2 p {
+    font-size: 14px;
+  }
+
+  #start {
+    padding: 12px 24px;
+    font-size: 18px;
+  }
+}

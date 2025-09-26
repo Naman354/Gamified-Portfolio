@@ -158,3 +158,121 @@ body {
   .skill-card { min-width: 90px }
   .skill-category.wide { grid-column: span 1 }
 }
+
+/* =====================
+   Responsive for Android / Mobile
+===================== */
+@media (max-width: 480px) {
+
+  body {
+    padding-top: 40px;
+  }
+
+  #progress-container {
+    top: 10px;
+    left: 10px;
+    padding: 4px 6px;
+    gap: 6px;
+  }
+
+  #level-text {
+    font-size: 11px;
+  }
+
+  #progress-bar {
+    width: 100px;
+    height: 10px;
+  }
+
+  #quiz-card {
+    padding: 24px 20px;
+    max-width: 90%;
+  }
+
+  #quiz-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  #quiz-card p {
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  #options {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .option-btn {
+    padding: 14px;
+    font-size: 13px;
+  }
+
+  #start-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  #projects-section {
+    padding: 20px 12px;
+  }
+
+  .projects-intro h3 {
+    font-size: 20px;
+  }
+
+  .projects-intro p {
+    font-size: 13px;
+  }
+
+  .projects-grid {
+    gap: 18px;
+  }
+
+  .project-card {
+    padding: 20px;
+    max-width: 100%;
+    min-height: 180px;
+  }
+
+  .project-card h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .project-card p {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .tech-stack span {
+    font-size: 10px;
+    padding: 3px 6px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  .more-info-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .more-info {
+    font-size: 12px;
+    padding-left: 16px;
+  }
+
+  #continue-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  #level-up h1 {
+    font-size: 32px;
+  }
+
+  #level-up h2, #xp-earned {
+    font-size: 14px;
+  }
+}
