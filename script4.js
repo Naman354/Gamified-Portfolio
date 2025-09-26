@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const xpEarnedText = document.getElementById("xp-earned");
   const resetBtn = document.getElementById("reset-btn");
   const continueBtn = document.getElementById("continue-btn");
+  const skillsContinueBtn = document.getElementById("skills-continue-btn");
   const puzzleSection = document.getElementById("puzzle-section");
   const skillsSection = document.getElementById("skills-section");
 
@@ -120,6 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   continueBtn.addEventListener("click", () => {
     levelUpPopup.style.display = "none";
+  });
+
+  skillsContinueBtn.addEventListener("click", () => {
+    window.location.href="page5.html";
+    // Replace with navigation or next section logic if needed
   });
 
   resetBtn.addEventListener("click", () => {
