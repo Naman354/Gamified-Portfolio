@@ -7,14 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let timerInterval = null;
   let typingStarted = false;
   let startTime = null;
+
   console.log(`Current level: ${level}`);
 
   const requiredLevel = 4;
   if (level < requiredLevel) {
     alert("You cannot access this level yet!");
-    if(level>0) window.location.href = `page${level+1}.html`;
+    if (level > 0) window.location.href = `page${level+1}.html`;
     else window.location.href = `index.html`;
   }
+
   const typingInput = document.getElementById("typing-input");
   const submitBtn = document.getElementById("submit-btn");
   const timerEl = document.getElementById("timer");
@@ -25,32 +27,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const xpEarnedText = document.getElementById("xp-earned");
   const levelUpPopup = document.getElementById("level-up");
   const continueBtn = document.getElementById("continue-btn");
-
   const challengeTitle = document.getElementById("challenge-title");
   const challengeInstruction = document.getElementById("challenge-instruction");
   const levelHeading = document.getElementById("level-heading");
+  const challengeSection = document.getElementById("challenge-section");
   const paragraphs = [
     "Once upon a time in a land of code, the brave programmer typed furiously to save the kingdom from bugs.",
     "As the sun set behind the mountains, she typed the final line that would unlock the secrets of the ancient scroll.",
     "In a world where every word matters, one keystroke could change everything.",
-    "In the quiet of the night, the coder’s fingers danced across the keyboard, weaving spells of logic and magic.",
+    "In the quiet of the night, the fingers of the coder danced across the keyboard, weaving spells of logic and magic.",
     "With every line of code, the programmer built a bridge between imagination and reality, where ideas came alive on the screen.",
   ];
 
-const randomIndex = Math.floor(Math.random() * paragraphs.length);
-const selectedParagraph = paragraphs[randomIndex];
+  const randomIndex = Math.floor(Math.random() * paragraphs.length);
+  const selectedParagraph = paragraphs[randomIndex];
 
-const targetTextEl = document.getElementById("target-text");
-if (targetTextEl) targetTextEl.textContent = selectedParagraph;
+  const targetTextEl = document.getElementById("target-text");
+  if (targetTextEl) targetTextEl.textContent = selectedParagraph;
 
-const targetText = selectedParagraph;
+  const targetText = selectedParagraph;
   document.getElementById("level-text").textContent = `Level ${level}`;
+
   if (localStorage.getItem("typingCompleted") === "true") {
-    challengeCard?.remove();
+    if (challengeCard) challengeCard.remove();
     contactSection.style.display = "flex";
+    if (challengeSection) challengeSection.style.display = "none";
     progressFill.style.width = "100%";
     xpEarnedText.textContent = `XP Earned: ${xp}`;
-    document.getElementById("level-text").textContent = `Level ${level}`;
     if (levelHeading) levelHeading.textContent = `LEVEL ${level}`;
   }
 
@@ -72,13 +75,34 @@ const targetText = selectedParagraph;
         statusMsg.textContent = "⏱ Time's up!";
         typingInput.disabled = true;
         submitBtn.disabled = true;
+        typingStarted = false;
       }
     }, 1000);
   }
 
-  typingInput?.addEventListener("input", startTimer);
+  typingInput.addEventListener("input", () => {
+    startTimer(); // keep your timer logic
 
-  submitBtn?.addEventListener("click", () => {
+    const userText = typingInput.value;
+    let highlightedText = "";
+
+    for (let i = 0; i < targetText.length; i++) {
+      if (i < userText.length) {
+        if (userText[i] === targetText[i]) {
+          highlightedText += `<span class="correct">${targetText[i]}</span>`;
+        } else {
+          highlightedText += `<span class="incorrect">${targetText[i]}</span>`;
+        }
+      } else {
+        highlightedText += targetText[i]; // letters not typed yet
+      }
+    }
+
+  targetTextEl.innerHTML = highlightedText;
+});
+
+
+  submitBtn.addEventListener("click", () => {
     if (!typingStarted) return;
 
     clearInterval(timerInterval);
@@ -91,8 +115,9 @@ const targetText = selectedParagraph;
 
       if (challengeTitle) challengeTitle.style.display = "none";
       if (challengeInstruction) challengeInstruction.style.display = "none";
-
-      challengeCard?.remove();
+      if (challengeSection) challengeSection.style.display = "none";
+      
+      if (challengeCard) challengeCard.remove();
       contactSection.style.display = "flex";
 
       level++;
@@ -108,19 +133,17 @@ const targetText = selectedParagraph;
     }
   });
 
-  continueBtn?.addEventListener("click", () => {
+  continueBtn.addEventListener("click", () => {
     levelUpPopup.style.display = "none";
   });
 
-  const input = document.getElementById("typing-input");
+  typingInput.addEventListener("paste", (e) => {
+    e.preventDefault();
+    alert("Pasting is not allowed in this typing challenge!");
+  });
 
-
-  input.addEventListener("paste", (e) => {
-     e.preventDefault();
-     alert("Pasting is not allowed in this typing challenge!");
-    });
-const form = document.getElementById("contact-form");
-  form?.addEventListener("submit", e => {
+  const form = document.getElementById("contact-form");
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
     let valid = true;
 
@@ -128,8 +151,14 @@ const form = document.getElementById("contact-form");
     const email = document.getElementById("email");
     const message = document.getElementById("message");
 
-    ["name", "email", "message"].forEach(id => {
-      document.getElementById(`${id}-error`).textContent = "";
+    if (!name || !email || !message) {
+      console.error("Contact form inputs missing in DOM!");
+      return;
+    }
+
+    ["name", "email", "message"].forEach((id) => {
+      const errEl = document.getElementById(`${id}-error`);
+      if (errEl) errEl.textContent = "";
     });
 
     if (!name.value.trim()) {

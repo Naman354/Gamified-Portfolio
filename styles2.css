@@ -29,9 +29,9 @@ body::before{
   position:fixed;
   width:100%;
   height:100%;
-  background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px);
-  pointer-events:none;
+  background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px)	;
   z-index:0;
+  pointer-events:none;
 }
 
 body::after {
@@ -139,14 +139,14 @@ main{
 }
 
 .content-section > div{
-  background: linear-gradient(135deg, rgba(0,255,102,0.05), rgba(0,255,102,0.15));
+  background: linear-gradient(135deg, rgba(0,255,102,0.1));
   padding:18px;
   border-radius:10px;
   border:1px solid rgba(0,255,102,0.06);
   box-shadow:0 8px 20px rgba(0,0,0,0.6);
   transition: all 0.3s ease;
   background-size: 400% 400%;
-  animation: gradientBG 6s ease infinite;
+  
 }
 
 .content-section > div:hover {
@@ -203,7 +203,7 @@ li i{
   align-items:flex-start;
 }
 
-.profile-image img{
+.profile-image img {
   width:220px;
   height:auto;
   border:3px solid var(--neon);
@@ -211,11 +211,12 @@ li i{
   box-shadow:0 0 18px var(--neon);
   object-fit:cover;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display:block; /* ensure hover works properly */
 }
 
 .profile-image img:hover {
-  transform: scale(1.03) rotate(-0.5deg);
-  box-shadow: 0 0 12px var(--neon); /* reduced glow */
+  transform: scale(1.05) rotate(-2deg); /* more noticeable */
+  box-shadow: 0 0 25px var(--neon), 0 0 12px var(--neon) inset;
 }
 
 #start1{
