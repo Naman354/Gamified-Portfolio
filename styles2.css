@@ -21,6 +21,35 @@ body{
   line-height:1.6;
   min-height:100vh;
   position:relative;
+  overflow-x: hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  width:100%;
+  height:100%;
+  background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px);
+  pointer-events:none;
+  z-index:0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--neon) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.08;
+  pointer-events: none;
+  animation: moveBG 10s linear infinite;
+  z-index:0;
+}
+
+@keyframes moveBG {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
 }
 
 #progress-container{
@@ -41,6 +70,7 @@ body{
   color:var(--muted);
   text-shadow:1px 1px #000;
   font-family:'Press Start 2P', monospace;
+  animation: flicker 2s infinite;
 }
 
 #progress-bar{
@@ -62,6 +92,11 @@ body{
 
 @keyframes fillBar{0%{width:0}100%{width:100%}}
 
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity:1; }
+  20%, 22%, 24%, 55% { opacity:0.6; }
+}
+
 #level-up{
   display:flex;
   flex-direction:column;
@@ -75,8 +110,9 @@ body{
   font-family:'Press Start 2P', monospace;
   font-size:40px;
   color:var(--neon);
-  text-shadow:2px 2px #000, 0 0 10px var(--neon);
+  text-shadow:2px 2px #000, 0 0 10px var(--neon), 0 0 20px var(--neon);
   margin-bottom:8px;
+  animation: flicker 2s infinite;
 }
 
 #level-up h2{
@@ -103,11 +139,25 @@ main{
 }
 
 .content-section > div{
-  background:var(--card-bg);
+  background: linear-gradient(135deg, rgba(0,255,102,0.05), rgba(0,255,102,0.15));
   padding:18px;
   border-radius:10px;
   border:1px solid rgba(0,255,102,0.06);
   box-shadow:0 8px 20px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
+  background-size: 400% 400%;
+  animation: gradientBG 6s ease infinite;
+}
+
+.content-section > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,255,102,0.3); /* reduced glow */
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h3{
@@ -115,6 +165,7 @@ h3{
   font-size:18px;
   color:var(--neon);
   margin-bottom:8px;
+  animation: flicker 2s infinite;
 }
 
 p{
@@ -159,16 +210,12 @@ li i{
   border-radius:12px;
   box-shadow:0 0 18px var(--neon);
   object-fit:cover;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-body::before{
-  content:'';
-  position:fixed;
-  width:100%;
-  height:100%;
-  background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px);
-  pointer-events:none;
-  z-index:0;
+.profile-image img:hover {
+  transform: scale(1.03) rotate(-0.5deg);
+  box-shadow: 0 0 12px var(--neon); /* reduced glow */
 }
 
 #start1{
@@ -186,11 +233,17 @@ body::before{
   box-shadow:0 0 20px #00ff00, 4px 6px 16px rgba(0,0,0,0.5);
   cursor:pointer;
   text-shadow:1px 1px #000;
+  transition: all 0.3s ease;
 }
 
 #start1:hover{
-  background:linear-gradient(to bottom, #00cc00, #009900);
-  box-shadow:0 0 28px #00ff00, 6px 8px 18px rgba(0,0,0,0.55);
+  background:linear-gradient(to bottom, #00bb00, #008800);
+  box-shadow:0 0 18px #00ff00, 4px 5px 14px rgba(0,0,0,0.4); /* reduced glow */
+}
+
+#start1:active {
+  transform: translateX(-50%) scale(0.97);
+  box-shadow:0 0 10px #00ff00, 2px 3px 10px rgba(0,0,0,0.3); /* reduced glow */
 }
 
 @media (max-width: 480px){

@@ -17,6 +17,11 @@ body {
   min-height:100vh;
 }
 
+@keyframes flicker {
+  0%,19%,21%,23%,25%,54%,56%,100% { opacity:1; }
+  20%,22%,24%,55% { opacity:0.6; }
+}
+
 #level-nav {
   position:fixed; top:20px; left:20px; z-index:50;
   display:flex; align-items:center; gap:10px;
@@ -25,6 +30,7 @@ body {
 
 #level-text {
   font-family:'Press Start 2P',monospace; color:var(--muted); font-size:13px;
+  animation: flicker 2s infinite;
 }
 
 #progress-bar {
@@ -35,8 +41,8 @@ body {
 #progress-fill {
   width:0%; height:100%;
   background:var(--neon);
-  box-shadow:0 0 10px var(--neon), 0 0 18px var(--neon) inset;
-  transition:width 0.45s ease;
+  box-shadow:0 0 8px var(--neon), 0 0 14px var(--neon) inset;
+  transition:width 0.45s ease, box-shadow 0.35s ease;
 }
 
 #challenge-section {
@@ -44,12 +50,13 @@ body {
 }
 
 #challenge-title {
-  font-family:'Press Start 2P', monospace;
+  font-family:'Press Start 2P',monospace;
   font-size:24px;
   color:var(--muted);
   margin-bottom:12px;
   padding: 12px 0;
-  text-shadow:0 0 6px var(--muted);
+  text-shadow:0 0 4px var(--muted);
+  animation: flicker 2s infinite;
 }
 
 #challenge-instruction {
@@ -57,20 +64,20 @@ body {
   color:var(--muted);
   margin-bottom:20px;
   padding: 12px 0;
-  text-shadow:0 0 6px var(--muted);
+  text-shadow:0 0 4px var(--muted);
 }
 
 #challenge-card {
   background:var(--card-bg);
   border:2px solid rgba(0,255,102,0.35);
   border-radius:16px; padding:30px;
-  box-shadow:0 0 22px rgba(0,255,102,0.25);
+  box-shadow:0 0 16px rgba(0,255,102,0.2);
   transition: box-shadow 0.2s;
   position:relative;
 }
 
 #challenge-card:hover {
-  box-shadow:0 0 28px rgba(0,255,102,0.3);
+  box-shadow:0 0 22px rgba(0,255,102,0.25);
 }
 
 #target-text {
@@ -94,40 +101,25 @@ body {
   margin-bottom:12px; font-weight:700;
   color:var(--muted);
   font-size:14px;
-  text-shadow:0 0 6px rgba(0,255,102,0.3);
+  text-shadow:0 0 4px rgba(0,255,102,0.3);
 }
 
-#submit-btn {
-  margin-top:12px;
-}
-
-#continue-btn {
-  margin-top:20px;
-  align-self:center;
-}
-
-#contact-form button {
-  margin-top:16px;
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-button, #start1 {
+button, #start1, #submit-btn, #continue-btn, #contact-form button {
   border:none; padding:14px 28px;
   font-size:18px;
   border-radius:8px;
   background:linear-gradient(to bottom,#00aa00,#007700);
   color:#fff; font-weight:700;
-  box-shadow:0 0 20px #00ff00, 4px 6px 16px rgba(0,0,0,0.5);
+  box-shadow:0 0 16px #00ff00, 4px 5px 12px rgba(0,0,0,0.4);
   cursor:pointer;
   text-shadow:1px 1px #000;
-  transition: box-shadow 0.3s;
+  transition: transform 0.15s, box-shadow 0.3s;
 }
 
-button:hover, #start1:hover, #continue-btn:hover, #contact-form button:hover {
+button:hover, #start1:hover, #submit-btn:hover, #continue-btn:hover, #contact-form button:hover {
   background:linear-gradient(to bottom,#00cc00,#009900);
-  box-shadow:0 0 28px #00ff00, 6px 8px 18px rgba(0,0,0,0.55);
+  box-shadow:0 0 20px #00ff00, 4px 5px 14px rgba(0,0,0,0.45);
+  transform: scale(1.03);
 }
 
 #contact-section {
@@ -139,7 +131,7 @@ button:hover, #start1:hover, #continue-btn:hover, #contact-form button:hover {
   border:2px solid rgba(0,255,102,0.35);
   border-radius:16px; padding:30px;
   max-width:500px; width:100%; text-align:center;
-  box-shadow:0 0 24px rgba(0,255,102,0.3);
+  box-shadow:0 0 18px rgba(0,255,102,0.25);
   display:flex; flex-direction:column; align-items:center;
 }
 
@@ -147,7 +139,7 @@ button:hover, #start1:hover, #continue-btn:hover, #contact-form button:hover {
 label { display:block; margin-bottom:6px; color:var(--muted); font-weight:600; }
 input, textarea {
   width:100%; padding:12px;
-  border:2px solid rgba(0,255,102,0.4);
+  border:2px solid rgba(0,255,102,0.35);
   border-radius:8px; background:rgba(0,0,0,0.5);
   color:var(--text);
 }
@@ -156,117 +148,41 @@ textarea { resize:none; min-height:100px; }
 .error { color:#ff5555; font-size:13px; }
 
 #level-up {
-  position:fixed; inset:0; display:none; z-index:120;
+  position:fixed; inset:0; z-index:120;
   background:rgba(0,0,0,0.92); color:var(--neon);
   font-family:'Press Start 2P',monospace;
   display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px;
   text-align:center; padding:24px;
-  text-shadow:0 0 6px #00ff66;
+  text-shadow:0 0 4px #00ff66;
 }
 
-#xp-earned { color:yellow; font-size:18px; }
-.congrats { color:var(--muted); font-size:14px; text-shadow:0 0 6px #ffee88; }
+#xp-earned { color:yellow; font-size:18px; text-shadow:0 0 8px yellow; }
+.congrats { color:var(--muted); font-size:14px; text-shadow:0 0 4px #ffee88; }
 
 @media (max-width:600px){
   #challenge-section { padding:100px 14px; }
-  #contact-form button, #continue-btn {
-    padding:12px 24px;
-    font-size:16px;
-  }
+  button, #start1, #submit-btn, #continue-btn, #contact-form button { padding:12px 24px; font-size:16px; }
 }
 
 @media (max-width: 480px) {
-
-  body {
-    padding-top: 40px;
-  }
-
-  #level-nav {
-    top: 10px;
-    left: 10px;
-    padding: 4px 6px;
-    gap: 6px;
-  }
-
-  #level-text {
-    font-size: 11px;
-  }
-
-  #progress-bar {
-    width: 100px;
-    height: 10px;
-  }
-
-  #challenge-section {
-    padding: 80px 12px 40px;
-  }
-
-  #challenge-title {
-    font-size: 18px;
-    padding: 8px 0;
-  }
-
-  #challenge-instruction {
-    font-size: 12px;
-    padding: 6px 0;
-  }
-
-  #challenge-card {
-    padding: 20px;
-  }
-
-  #target-text {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  #typing-input {
-    padding: 10px;
-    font-size: 14px;
-    min-height: 80px;
-  }
-
-  .info-bar {
-    font-size: 12px;
-    gap: 6px;
-  }
-
-  button, #start1, #submit-btn, #continue-btn, #contact-form button {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  #contact-section {
-    padding: 80px 12px;
-  }
-
-  #contact-card {
-    padding: 20px;
-    max-width: 95%;
-  }
-
-  .form-group label {
-    font-size: 12px;
-  }
-
-  input, textarea {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  textarea {
-    min-height: 80px;
-  }
-
-  #level-up {
-    padding: 16px;
-  }
-
-  #xp-earned {
-    font-size: 16px;
-  }
-
-  .congrats {
-    font-size: 12px;
-  }
+  body { padding-top: 40px; }
+  #level-nav { top: 10px; left: 10px; padding: 4px 6px; gap: 6px; }
+  #level-text { font-size: 11px; }
+  #progress-bar { width: 100px; height: 10px; }
+  #challenge-section { padding: 80px 12px 40px; }
+  #challenge-title { font-size: 18px; padding: 8px 0; }
+  #challenge-instruction { font-size: 12px; padding: 6px 0; }
+  #challenge-card { padding: 20px; }
+  #target-text { font-size: 14px; padding: 8px; }
+  #typing-input { padding: 10px; font-size: 14px; min-height: 80px; }
+  .info-bar { font-size: 12px; gap: 6px; }
+  button, #start1, #submit-btn, #continue-btn, #contact-form button { padding: 10px 20px; font-size: 14px; }
+  #contact-section { padding: 80px 12px; }
+  #contact-card { padding: 20px; max-width: 95%; }
+  .form-group label { font-size: 12px; }
+  input, textarea { padding: 10px; font-size: 14px; }
+  textarea { min-height: 80px; }
+  #level-up { padding: 16px; }
+  #xp-earned { font-size: 16px; }
+  .congrats { font-size: 12px; }
 }

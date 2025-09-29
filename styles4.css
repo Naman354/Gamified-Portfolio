@@ -17,6 +17,11 @@ body {
   min-height: 100vh;
 }
 
+@keyframes flicker {
+  0%,19%,21%,23%,25%,54%,56%,100% { opacity:1; }
+  20%,22%,24%,55% { opacity:0.6; }
+}
+
 #level-nav {
   position: fixed; top: 20px; left: 20px; z-index: 50;
   display: flex; align-items: center; gap: 10px;
@@ -24,7 +29,10 @@ body {
 }
 
 #level-text {
-  font-family: 'Press Start 2P', monospace; color: var(--muted); font-size: 13px;
+  font-family: 'Press Start 2P', monospace; 
+  color: var(--muted); 
+  font-size: 13px;
+  animation: flicker 2s infinite;
 }
 
 #progress-bar {
@@ -35,7 +43,7 @@ body {
 #progress-fill {
   width: 0%; height: 100%;
   background: var(--neon);
-  box-shadow: 0 0 10px var(--neon), 0 0 18px var(--neon) inset;
+  box-shadow: 0 0 8px var(--neon), 0 0 14px var(--neon) inset;
   transition: width 0.45s ease, box-shadow 0.35s ease;
 }
 
@@ -51,41 +59,44 @@ body {
   background: rgba(0,255,102,0.12);
   border: 2px solid rgba(0,255,102,0.28);
   border-radius: 14px; padding: 14px 22px; min-width: 110px;
-  cursor: grab; transition: transform .18s, box-shadow .25s;
+  cursor: grab; transition: transform 0.18s, box-shadow 0.25s;
   font-weight: 600; color: var(--text);
 }
 
-.skill-card:hover { transform: scale(1.06); box-shadow: 0 0 22px rgba(0,255,102,0.18) }
+.skill-card:hover { 
+  transform: scale(1.05); 
+  box-shadow: 0 0 16px rgba(0,255,102,0.15);
+}
 
 .drop-zone {
   background: rgba(0,0,0,0.62);
   border: 2px dashed rgba(0,255,102,0.22);
   border-radius: 12px; padding: 22px 34px; min-width: 160px; min-height: 68px;
   display: flex; align-items: center; justify-content: center; text-align: center;
-  transition: all .22s ease; font-weight: 700;
+  transition: all 0.22s ease; font-weight: 700;
 }
 
-.drop-zone.correct { animation: correctPulse .5s; box-shadow: 0 0 20px limegreen }
-.drop-zone.incorrect { animation: incorrectShake .5s; box-shadow: 0 0 20px rgba(255,80,80,0.9) }
+.drop-zone.correct { animation: correctPulse 0.5s; box-shadow: 0 0 16px limegreen }
+.drop-zone.incorrect { animation: incorrectShake 0.5s; box-shadow: 0 0 16px rgba(255,80,80,0.9) }
 
 .drop-zone.locked {
   background: rgba(0,255,102,0.18);
   border: 2px solid rgba(0,255,102,0.7);
-  box-shadow: 0 6px 18px rgba(0,255,102,0.12);
+  box-shadow: 0 6px 14px rgba(0,255,102,0.12);
   pointer-events: none;
   opacity: 0.98;
 }
 
 @keyframes correctPulse {
-  0% { transform: scale(1); box-shadow: 0 0 18px limegreen }
-  50% { transform: scale(1.04); box-shadow: 0 0 36px limegreen }
-  100% { transform: scale(1); box-shadow: 0 0 18px limegreen }
+  0% { transform: scale(1); box-shadow: 0 0 14px limegreen }
+  50% { transform: scale(1.04); box-shadow: 0 0 28px limegreen }
+  100% { transform: scale(1); box-shadow: 0 0 14px limegreen }
 }
 
 @keyframes incorrectShake {
   0% { transform: translateX(0) }
-  25% { transform: translateX(-6px) }
-  50% { transform: translateX(6px) }
+  25% { transform: translateX(-5px) }
+  50% { transform: translateX(5px) }
   75% { transform: translateX(-4px) }
   100% { transform: translateX(0) }
 }
@@ -100,7 +111,7 @@ body {
   background: linear-gradient(to bottom, #00aa00, #007700);
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 0 20px #00ff00, 4px 6px 16px rgba(0,0,0,0.5);
+  box-shadow: 0 0 16px #00ff00, 4px 5px 12px rgba(0,0,0,0.4);
   cursor: pointer;
   text-shadow: 1px 1px #000;
   transition: transform 0.15s, box-shadow 0.3s;
@@ -108,8 +119,8 @@ body {
 
 #reset-btn:hover, #continue-btn:hover, #skills-continue-btn:hover {
   background: linear-gradient(to bottom, #00cc00, #009900);
-  box-shadow: 0 0 28px #00ff00, 6px 8px 18px rgba(0,0,0,0.55);
-  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ff00, 4px 5px 14px rgba(0,0,0,0.45);
+  transform: scale(1.03);
 }
 
 #level-up {
@@ -118,6 +129,7 @@ body {
   display: none; 
   align-items: center; justify-content: center; flex-direction: column; gap: 12px;
   text-align: center; padding: 24px;
+  animation: fadeIn 0.6s ease;
 }
 
 #xp-earned {
@@ -128,7 +140,11 @@ body {
 
 #skills-section { display: none; padding: 72px 20px; max-width: 1100px; margin: 0 auto; }
 
-.section-title { font-family: 'Press Start 2P', monospace; color: var(--neon); text-shadow: 0 0 12px var(--neon); margin-bottom: 28px; }
+.section-title { 
+  font-family: 'Press Start 2P', monospace; color: var(--neon); 
+  text-shadow: 0 0 12px var(--neon); margin-bottom: 28px;
+  animation: flicker 2s infinite;
+}
 
 .skills-grid {
   display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 28px;
@@ -137,12 +153,17 @@ body {
 .skill-category {
   background: rgba(0,0,0,0.6); border: 2px solid rgba(0,255,102,0.28);
   border-radius: 14px; padding: 20px; text-align: left; color: var(--text);
-  box-shadow: 0 0 14px rgba(0,255,102,0.12); transition: transform .18s, box-shadow .22s;
+  box-shadow: 0 0 10px rgba(0,255,102,0.12); transition: transform .18s, box-shadow .22s;
 }
 
-.skill-category:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(0,255,102,0.16) }
+.skill-category:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 10px 28px rgba(0,255,102,0.16) 
+}
 
-.skill-category h3 { color: var(--muted); font-family: 'Press Start 2P', monospace; font-size: 14px; margin-bottom: 10px }
+.skill-category h3 { 
+  color: var(--muted); font-family: 'Press Start 2P', monospace; font-size: 14px; margin-bottom: 10px 
+}
 .skill-category p { color: var(--text); line-height: 1.6; font-size: 14px }
 
 .skill-category.wide { grid-column: span 2 }
@@ -155,116 +176,13 @@ body {
 }
 
 @media (max-width: 480px) {
-
-  body {
-    padding-top: 40px;
-  }
-
-  #progress-container {
-    top: 10px;
-    left: 10px;
-    padding: 4px 6px;
-    gap: 6px;
-  }
-
-  #level-text {
-    font-size: 11px;
-  }
-
-  #progress-bar {
-    width: 100px;
-    height: 10px;
-  }
-
-  #quiz-card {
-    padding: 24px 20px;
-    max-width: 90%;
-  }
-
-  #quiz-card h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
-
-  #quiz-card p {
-    font-size: 14px;
-    margin-bottom: 18px;
-  }
-
-  #options {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .option-btn {
-    padding: 14px;
-    font-size: 13px;
-  }
-
-  #start-btn {
-    padding: 12px 24px;
-    font-size: 16px;
-  }
-
-  #projects-section {
-    padding: 20px 12px;
-  }
-
-  .projects-intro h3 {
-    font-size: 20px;
-  }
-
-  .projects-intro p {
-    font-size: 13px;
-  }
-
-  .projects-grid {
-    gap: 18px;
-  }
-
-  .project-card {
-    padding: 20px;
-    max-width: 100%;
-    min-height: 180px;
-  }
-
-  .project-card h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .project-card p {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
-
-  .tech-stack span {
-    font-size: 10px;
-    padding: 3px 6px;
-    margin-right: 4px;
-    margin-bottom: 4px;
-  }
-
-  .more-info-btn {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-
-  .more-info {
-    font-size: 12px;
-    padding-left: 16px;
-  }
-
-  #continue-btn {
-    padding: 12px 24px;
-    font-size: 16px;
-  }
-
-  #level-up h1 {
-    font-size: 32px;
-  }
-
-  #level-up h2, #xp-earned {
-    font-size: 14px;
-  }
+  body { padding-top: 40px; }
+  #level-nav { top:10px; left:10px; padding:4px 6px; gap:6px; }
+  #level-text { font-size:11px; }
+  #progress-bar { width:100px; height:10px; }
+  #puzzle-section { padding:80px 12px 40px }
+  .drop-zone { min-width:100px; padding:16px }
+  .skill-card { padding:12px 18px; font-size:13px; }
+  #reset-btn, #continue-btn, #skills-continue-btn { padding:12px 24px; font-size:16px; }
+  .skill-category { padding:16px; }
 }
