@@ -30,9 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const challengeInstruction = document.getElementById("challenge-instruction");
   const levelHeading = document.getElementById("level-heading");
   const paragraphs = [
-    "The quick brown fox jumps over the lazy dog.",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "Typing challenges improve your speed and accuracy. Practice makes perfect!"
+    "Once upon a time in a land of code, the brave programmer typed furiously to save the kingdom from bugs.",
+    "As the sun set behind the mountains, she typed the final line that would unlock the secrets of the ancient scroll.",
+    "In a world where every word matters, one keystroke could change everything.",
+    "In the quiet of the night, the coder’s fingers danced across the keyboard, weaving spells of logic and magic.",
+    "With every line of code, the programmer built a bridge between imagination and reality, where ideas came alive on the screen.",
   ];
 
 const randomIndex = Math.floor(Math.random() * paragraphs.length);
