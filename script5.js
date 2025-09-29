@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if(level>0) window.location.href = `page${level+1}.html`;
     else window.location.href = `index.html`;
   }
-  const targetText = document.getElementById("target-text")?.textContent.trim();
   const typingInput = document.getElementById("typing-input");
   const submitBtn = document.getElementById("submit-btn");
   const timerEl = document.getElementById("timer");
@@ -30,7 +29,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const challengeTitle = document.getElementById("challenge-title");
   const challengeInstruction = document.getElementById("challenge-instruction");
   const levelHeading = document.getElementById("level-heading");
+  const paragraphs = [
+    "The quick brown fox jumps over the lazy dog.",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "Typing challenges improve your speed and accuracy. Practice makes perfect!"
+  ];
 
+const randomIndex = Math.floor(Math.random() * paragraphs.length);
+const selectedParagraph = paragraphs[randomIndex];
+
+const targetTextEl = document.getElementById("target-text");
+if (targetTextEl) targetTextEl.textContent = selectedParagraph;
+
+const targetText = selectedParagraph;
+  document.getElementById("level-text").textContent = `Level ${level}`;
   if (localStorage.getItem("typingCompleted") === "true") {
     challengeCard?.remove();
     contactSection.style.display = "flex";
@@ -98,7 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
     levelUpPopup.style.display = "none";
   });
 
-  const form = document.getElementById("contact-form");
+  const input = document.getElementById("typing-input");
+
+
+  input.addEventListener("paste", (e) => {
+     e.preventDefault();
+     alert("Pasting is not allowed in this typing challenge!");
+    });
+const form = document.getElementById("contact-form");
   form?.addEventListener("submit", e => {
     e.preventDefault();
     let valid = true;

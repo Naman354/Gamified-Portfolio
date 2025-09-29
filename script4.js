@@ -22,12 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const skillsContinueBtn = document.getElementById("skills-continue-btn");
   const puzzleSection = document.getElementById("puzzle-section");
   const skillsSection = document.getElementById("skills-section");
-
   const initialRemainingTargets = {};
-  const remainingTargets = {};
+  const remainingTargets = {};  
   const projectRemainingSkills = {};
   let initialTotalDrops = 0;
-
+  levelText.textContent = `Level ${level}`;
+  
   skillCards.forEach(card => {
     const key = card.dataset.skill;
     const raw = card.dataset.targets || "";

@@ -5,8 +5,8 @@ if (isNaN(level)) {
 }
 console.log(`Current level: ${level}`);
 
-
 document.getElementById('start').addEventListener('click', function(){
-    localStorage.setItem("level", 1);
+    if(level == 0) level++;
+    localStorage.setItem("level", level);
     window.location.href="page2.html";
 });
