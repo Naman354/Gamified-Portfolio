@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let level = parseInt(localStorage.getItem("level")) || 3;
+  let level = parseInt(localStorage.getItem("level"));
+  if (isNaN(level)) level = 0;
   let xp = parseInt(localStorage.getItem("xp")) || 0;
   let timerDuration = 90;
   let timer = timerDuration;
   let timerInterval = null;
   let typingStarted = false;
   let startTime = null;
+  console.log(`Current level: ${level}`);
 
+  const requiredLevel = 4;
+  if (level < requiredLevel) {
+    alert("You cannot access this level yet!");
+    if(level>0) window.location.href = `page${level+1}.html`;
+    else window.location.href = `index.html`;
+  }
   const targetText = document.getElementById("target-text")?.textContent.trim();
   const typingInput = document.getElementById("typing-input");
   const submitBtn = document.getElementById("submit-btn");

@@ -1,8 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let level = parseInt(localStorage.getItem("level")) || 2;
+  let level = parseInt(localStorage.getItem("level"));
+  if (isNaN(level)) level = 0;
   let xp = parseInt(localStorage.getItem("xp")) || 0;
   let draggedSkill = null;
+  console.log(`Current level: ${level}`);
 
+  const requiredLevel = 3;
+  if (level < requiredLevel) {
+    alert("You cannot access this level yet!");
+    if(level>0) window.location.href = `page${level+1}.html`;
+    else window.location.href = `index.html`;
+  }
   const skillCards = Array.from(document.querySelectorAll(".skill-card"));
   const dropZones = Array.from(document.querySelectorAll(".drop-zone"));
   const progressFill = document.getElementById("progress-fill");

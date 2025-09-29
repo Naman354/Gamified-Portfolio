@@ -1,9 +1,17 @@
-let level = parseInt(localStorage.getItem("level")) || 1;
-let xp = parseInt(localStorage.getItem("xp")) || 0;
+let level = parseInt(localStorage.getItem("level"));
+if (isNaN(level)) level = 0;
+console.log(`Current level: ${level}`);
+
+const requiredLevel = 2;
+  if (level < requiredLevel) {
+    alert("You cannot access this level yet!");
+    if(level>0) window.location.href = `page2.html`;
+    else window.location.href = `index.html`;
+  }
+  let xp = parseInt(localStorage.getItem("xp")) || 0;
 let currentQuestionIndex = 0;
 let score = 0;
 let quizPlayed = localStorage.getItem("quizPlayed") === "true";
-
 const questions = [
   { question: "Which language powers web interactivity?", options: ["HTML", "CSS", "JavaScript", "Python"], answer: 2 },
   { question: "What does CSS stand for?", options: ["Creative Style System", "Cascading Style Sheets", "Colorful Style Syntax", "Custom Style Setup"], answer: 1 },
